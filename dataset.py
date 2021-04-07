@@ -48,8 +48,6 @@ class ClevrDataset(object):
             index += 1
         return image_array, image_to_id_lookup
 
-    # objects.json
-
     def load_clevr_objects(self, json_path):
         """
         Method to load clever object categories.
@@ -69,6 +67,7 @@ class ClevrDataset(object):
             category_dict['id'] = index
             category_dict['name'] = item
             category_dict['supercategory'] = 'none'
+            category_array.append(category_dict)
         return category_array
 
     def return_object_dict(self, dictionary):
@@ -178,6 +177,7 @@ class ClevrDataset(object):
         t_dict['annotations'] = self.load_clevr_annotation(
             annotation_path, image_to_id_lookup)
         t_dict['category'] = self.load_clevr_objects(object_path)
+        print(t_dict['category'])
         save_path = os.path.join(base_path, file_name)
         with open(save_path, 'w') as outfile:
             json.dump(t_dict, outfile)

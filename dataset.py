@@ -112,8 +112,8 @@ class ClevrDataset(object):
             annotation_dict = dict()
             annotation_dict['id'] = index
             annotation_dict['image_id'] = image_id
-            annotation_dict['category_id'] = i['category']
-            annotation_dict['bbox'] = i['bbox']
+            annotation_dict['category_id'] = unique_object_list[i]['category']
+            annotation_dict['bbox'] = unique_object_list[i]['bbox']
             annotation_dict['segmentation'] = []
             annotation_dict['area'] = 0
             annotation_dict['iscrowd'] = 0
@@ -177,7 +177,7 @@ class ClevrDataset(object):
             meta_data_path)
         t_dict['annotations'] = self.load_clevr_annotation(
             annotation_path, image_to_id_lookup)
-        t_dict['categories'] = self.load_clevr_objects(object_path)
+        t_dict['category'] = self.load_clevr_objects(object_path)
         save_path = os.path.join(base_path, file_name)
         with open(save_path, 'w') as outfile:
-            json.dumps(t_dict, outfile)
+            json.dump(t_dict, outfile)

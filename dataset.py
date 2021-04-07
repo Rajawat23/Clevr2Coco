@@ -108,7 +108,7 @@ class ClevrDataset(object):
             unique_object_list += returns
         unique_object_list = list(
             {item['category']: item for item in unique_object_list}.values())
-        for i in len(unique_object_list):
+        for i in range(len(unique_object_list)):
             annotation_dict = dict()
             annotation_dict['id'] = index
             annotation_dict['image_id'] = image_id

@@ -177,7 +177,6 @@ class ClevrDataset(object):
         t_dict['annotations'] = self.load_clevr_annotation(
             annotation_path, image_to_id_lookup)
         t_dict['category'] = self.load_clevr_objects(object_path)
-        print(t_dict['category'])
         save_path = os.path.join(base_path, file_name)
         with open(save_path, 'w') as outfile:
             json.dump(t_dict, outfile)
